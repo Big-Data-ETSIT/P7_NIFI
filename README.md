@@ -112,6 +112,7 @@ Dentro de la GUI de NiFi, arrastar el icono de Processor hacia el area de trabaj
 ![paso_1](./images/1.webp)
 
 Se abrirá una ventana donde se permitirá elegir lo procesadores, en nuestro caso se deben aladir los siguientes:
+![paso_2](./images/2.webp)
 
 - GetTwitter
 - EvaluateJsonPath
@@ -122,30 +123,30 @@ Se abrirá una ventana donde se permitirá elegir lo procesadores, en nuestro ca
 
 **Get twitter processor:** Este procesador se utiliza para extraer tweets de la API de streaming de Twitter. Necesitamos poner Consumer Key, Consumer Secret, Access Token y Access Token Secret que obtenemos del sitio de desarrollo de Twitter.
 
-![paso_2](./images/2.webp)
+![paso_3](./images/3.webp)
 
 **EvaluateJsonPath processor:**Este procesador se utiliza para evaluar las expresiones JSON que se extraen de Twitter y, a continuación, asignar el resultado de dichas expresiones a los atributos del archivo de flujo.
 
-![paso_3](./images/3.webp)
+![paso_4](./images/4.webp)
 
 **AttributesToJSON:**Este procesador creará un archivo JSON para los atributos del archivo de flujo creados por el procesador anterior.
 Usando como directorio de trabajo la carpeta donde se clono el repositorio:
-![paso_4](./images/4.webp)
+![paso_5](./images/5.webp)
 
 **ConvertJSONToSQL:**This processor converts JSON file to DML statement. To use this processor, we need to create JDBC Connection Pool.
 
-![paso_5](./images/11.webp)
+![paso_6](./images/11.webp)
 
 A continuación se debe añadir un controlador JDBC Connection Pool que se conecta a la base de datos MySQL. Crearemos este pool seleccionando "Create New Service" de la lista desplegable en la propiedad JDBC Connection pool. Los pasos para realizar esta configuración serán mostrados en el laboratorio.
 
 
 **ExecuteSQL processor:**Este procesador utilizado para ejecutar la sentencia de inserción proviene del procesador ConvertJSONToSQL.
 Necesitamos seleccionar el mismo Connection pool que creamos en ConvertJSONToSQL para la propiedad Database Connection Pooling Service.
-![paso_6](./images/12.webp)
+![paso_7](./images/12.webp)
 
 Finalmente el flujo que se ha definido será el siguiente
 
-![paso_7](./images/14.webp)
+![paso_8](./images/14.webp)
 
 Verificar que se esté llenando la tabla con los tweets conectandose  a la shell de MySQL y ejecutando la sigiente query:
 ```
