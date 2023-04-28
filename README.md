@@ -79,7 +79,7 @@ Dado a que se está utilizando un base de datos relacional para escribir los dat
 Acceder a la shell de PostgreSQL, el password de acceso es (`example`):
 ```
 sudo docker exec -it postgres /bin/bash
-psql -u root 
+psql -U postgres 
 ```
 Crear la base de datos `bd_database`:
 ```
