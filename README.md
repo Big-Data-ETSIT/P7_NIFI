@@ -65,7 +65,7 @@ La salida que se debería obtener al ejecutar el comando anterior es la siguient
 ```
 CONTAINER ID   IMAGE          COMMAND                  CREATED             STATUS          PORTS                                                   NAMES
 10a99e148efc   mongo          "docker-entrypoint.s…"   56 minutes ago      Up 56 minutes   0.0.0.0:27018->27017/tcp                                mongo
-bc40bcd833c4   mysql:5.7.22   "docker-entrypoint.s…"   56 minutes ago      Up 56 minutes   0.0.0.0:5432->5432/tcp                                  postgres
+bc40bcd833c4   postgres   "docker-entrypoint.s…"   56 minutes ago      Up 56 minutes   0.0.0.0:5432->5432/tcp                                  postgres
 2e4ef994f031   apache/nifi    "../scripts/start.sh"    About an hour ago   Up 56 minutes   8000/tcp, 8080/tcp, 10000/tcp, 0.0.0.0:8443->8443/tcp   nifi
 ```
 
