@@ -15,7 +15,7 @@ do
 
     {
         "author_id": "2244994945",
-        "text": '$i' " What did the developer write in their Valentine’s card  I = Love(You)",
+        "text":  " '$i' What did the developer write in their Valentine’s card  I = Love(You)",
         "id": "1228393702244134912",
         "created_at": "2020-02-14T19:00:55.000Z",
         "lang":"en"
