@@ -84,19 +84,19 @@ mysql -u root -p
 Crear la base de datos `bd_database`:
 ```
 CREATE DATABASE bd_database;
-use bd_database;
+\c bd_database;
 ```
 Crear la tabla donde se almacenarán los tweets `tweets_tab` table:
 ```
 CREATE TABLE tweets_tab(
     CREATED_AT VARCHAR(500),
     ID BIGINT,
-    LANG VARCHAR(100) CHARACTER SET utf8,
-    TEXT LONGTEXT CHARACTER SET utf8);
+    LANG VARCHAR(100),
+    TEXT TEXT);
 ```
 Verificar que se ha creado correctamente la tabla:
 ```
-show tables;
+\dt;
 describe tweets_tab;
 ```
 **Acceder a NiFi**
