@@ -34,7 +34,7 @@ Posteriormente en el bloque 2 se plantea utilizar los mismos componentes anterio
 
 ## 4. Inicializar el entorno.
 
-Para la realización de la práctica se ha provisionado una máquina virtual con sistema operativo linus y distribución Ubuntu. En los recursos de Moodle de la asignatura se acceder al enlace de descarga.
+Para la realización de la práctica se ha provisionado una máquina virtual con sistema operativo linux y distribución Ubuntu. En los recursos de Moodle de la asignatura se acceder al enlace de descarga.
 
 Descarge el fichero de VM con extensión .ova e importelo en virtualbox. 
 
