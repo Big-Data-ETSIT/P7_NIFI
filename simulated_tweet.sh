@@ -1,7 +1,9 @@
 while true
 do
-    temp=$(shuf -i 18-53 -n 1)
-    number=$(shuf -i 1-3113 -n 1)
+    #temp=$(shuf -i 18-53 -n 1)
+    #number=$(shuf -i 1-3113 -n 1)
+    i=$((i+1))
+    echo $i
 
     curl -v -s -S -X POST http://localhost:5050/notify \
     --header 'Content-Type: application/json; charset=utf-8' \
@@ -13,7 +15,7 @@ do
 
     {
         "author_id": "2244994945",
-        "text": '$number' " What did the developer write in their Valentine’s card  I = Love(You)",
+        "text": '$i' " What did the developer write in their Valentine’s card  I = Love(You)",
         "id": "1228393702244134912",
         "created_at": "2020-02-14T19:00:55.000Z",
         "lang":"en"
