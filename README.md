@@ -137,16 +137,20 @@ Usando como directorio de trabajo la carpeta donde se clono el repositorio:
 
 ![paso_6](./images/11.webp)
 
-A continuación se debe añadir un controlador JDBC Connection Pool que se conecta a la base de datos MySQL. Crearemos este pool seleccionando "Create New Service" de la lista desplegable en la propiedad JDBC Connection pool. Los pasos para realizar esta configuración serán mostrados en el laboratorio.
+A continuación se debe añadir un controlador JDBC Connection Pool que se conecta a la base de datos MySQL. Crearemos este pool seleccionando "Create New Service" de la lista desplegable en la propiedad JDBC Connection pool. Los pasos para realizar esta configuración serán mostrados en el laboratorio, en donde se incluirán los siguientes datos:
+
+
+![paso_7](./images/17.png)
+
 
 
 **ExecuteSQL processor:**Este procesador utilizado para ejecutar la sentencia de inserción proviene del procesador ConvertJSONToSQL.
 Necesitamos seleccionar el mismo Connection pool que creamos en ConvertJSONToSQL para la propiedad Database Connection Pooling Service.
-![paso_7](./images/12.webp)
+![paso_8](./images/12.webp)
 
 Finalmente el flujo que se ha definido será el siguiente
 
-![paso_8](./images/14.webp)
+![paso_9](./images/14.webp)
 
 Una vez que ya estaá todo configurado, le damos a arrancar a los procesadores y luego en un terminal cuyo directorio de trabajo se encuentre en la carpeta del proyecto debemos ejecutar el siguiente script para que se simule el envío de los eventos:
 ```
