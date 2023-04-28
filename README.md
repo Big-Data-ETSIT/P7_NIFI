@@ -26,9 +26,9 @@ La práctica plantea un ejercicio que permite identificar el proceso de extracci
 
 La práctica está desarrollada en dos bloques. Uno con instrucciones específicas tanto para desplegar el entorno como para configurar los procesadores necsarios para realizar las operaciones previas al almacenamiento de los datos y el otro bloque está definido como un ejercicio de desafío, en el que se  utilizará el desarrollo previo  y además se deberá realizar las configuraciones necesarias para poder almacenar los datos en un sistema de almacenamiento distinto al original.
 
-El primer bloque del desarrollo de la práctica está compuesto por una única instancia de NiFi y una instancia de una base de datos MySQL. Por medio de este entorno se plantea la obtención de datos provenientes de tweets haciendo uso del API de twiter, realizar una pequeña manipulación de dichos datos para adaptarla a un formato específico, para luego almacenar dichos datos en una base de datos creada en MySQL.
+El primer bloque del desarrollo de la práctica está compuesto por una única instancia de NiFi y una instancia de una base de datos PostgreSQL. Por medio de este entorno se plantea la obtención de datos provenientes de un script que simula el envio de tweets, realizar una pequeña manipulación de dichos datos para adaptarla a un formato específico, para luego almacenar dichos datos en una base de datos creada en PostgreSQL.
 
-Posteriormente en el bloque 2 se plantea utilizar los mismos componentes anteriores pero en este caso en lugar de almacenar los datos en MySQL, se utilizará MongoDB para dicha acción, pasando de almacenar los datos de un esquema realacional en tablas a un no relacional basado en documentos. 
+Posteriormente en el bloque 2 se plantea utilizar los mismos componentes anteriores pero en este caso en lugar de almacenar los datos en PostgreSQL, se utilizará MongoDB para dicha acción, pasando de almacenar los datos de un esquema realacional en tablas a un no relacional basado en documentos. 
 
 
 
@@ -65,21 +65,21 @@ La salida que se debería obtener al ejecutar el comando anterior es la siguient
 ```
 CONTAINER ID   IMAGE          COMMAND                  CREATED             STATUS          PORTS                                                   NAMES
 10a99e148efc   mongo          "docker-entrypoint.s…"   56 minutes ago      Up 56 minutes   0.0.0.0:27018->27017/tcp                                mongo
-bc40bcd833c4   mysql:5.7.22   "docker-entrypoint.s…"   56 minutes ago      Up 56 minutes   0.0.0.0:3306->3306/tcp                                  mysql
+bc40bcd833c4   mysql:5.7.22   "docker-entrypoint.s…"   56 minutes ago      Up 56 minutes   0.0.0.0:5432->5432/tcp                                  postgres
 2e4ef994f031   apache/nifi    "../scripts/start.sh"    About an hour ago   Up 56 minutes   8000/tcp, 8080/tcp, 10000/tcp, 0.0.0.0:8443->8443/tcp   nifi
 ```
 
 ## 5. Tareas a realizar.
 
-### Bloque 1: Lectura y escritura de eventos por medio del API de Twitter y Apache NiFi.
+### Bloque 1: Lectura y escritura de eventos por medio un script que simula el envío de tweets y Apache NiFi.
 
 Dado a que se está utilizando un base de datos relacional para escribir los datos de salida, es necesario de que se cree tanto la base de datos como la tabla en donde se van a almacenar dichos datos. Para ello se debe realizar lo siguiente:
 
-**Conectarse a MySQL:**
-Acceder a la shell de MySQL, el password de acceso es (`example`):
+**Conectarse a PostgreSQL:**
+Acceder a la shell de PostgreSQL, el password de acceso es (`example`):
 ```
-sudo docker exec -it mysql /bin/bash
-mysql -u root -p
+sudo docker exec -it postgres /bin/bash
+psql -u root 
 ```
 Crear la base de datos `bd_database`:
 ```
@@ -97,7 +97,7 @@ CREATE TABLE tweets_tab(
 Verificar que se ha creado correctamente la tabla:
 ```
 \dt;
-describe tweets_tab;
+
 ```
 **Acceder a NiFi**
 
@@ -114,16 +114,16 @@ Dentro de la GUI de NiFi, arrastar el icono de Processor hacia el area de trabaj
 Se abrirá una ventana donde se permitirá elegir lo procesadores, en nuestro caso se deben aladir los siguientes:
 ![paso_2](./images/2.webp)
 
-- GetTwitter
+- ListenHTTP
 - EvaluateJsonPath
 - AttributesToJSON
 - ConvertJSONToSQL
 - ExecuteSQL
 - LogMessage
 
-**Get twitter processor:** Este procesador se utiliza para extraer tweets de la API de streaming de Twitter. Necesitamos poner Consumer Key, Consumer Secret, Access Token y Access Token Secret que obtenemos del sitio de desarrollo de Twitter.
+**Listen HTTP processor:** Este procesador se utiliza para extraer los datos simulados de los tweets . Necesitamos poner le Base Path y el Listening Port que son los parametros necesarios para recibir las notificaciones.
 
-![paso_3](./images/3.webp)
+![paso_3](./images/3.png)
 
 **EvaluateJsonPath processor:**Este procesador se utiliza para evaluar las expresiones JSON que se extraen de Twitter y, a continuación, asignar el resultado de dichas expresiones a los atributos del archivo de flujo.
 
@@ -148,7 +148,12 @@ Finalmente el flujo que se ha definido será el siguiente
 
 ![paso_8](./images/14.webp)
 
-Verificar que se esté llenando la tabla con los tweets conectandose  a la shell de MySQL y ejecutando la sigiente query:
+Una vez que ya estaá todo configurado, le damos a arrancar a los procesadores y luego en un terminal cuyo directorio de trabajo se encuentre en la carpeta del proyecto debemos ejecutar el siguiente script para que se simule el envío de los eventos:
+```
+./simulated_tweet.sh
+```
+
+Verificar que se esté llenando la tabla con los tweets conectandose  a la shell de PostgreSQL y ejecutando la sigiente query:
 ```
 Select * from tweets_tab;
 ```
