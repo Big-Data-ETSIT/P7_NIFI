@@ -125,26 +125,26 @@ Se abrirá una ventana donde se permitirá elegir lo procesadores, en nuestro ca
 
 ![paso_3](./images/3.png)
 
-**EvaluateJsonPath processor:**Este procesador se utiliza para evaluar las expresiones JSON que se extraen de Twitter y, a continuación, asignar el resultado de dichas expresiones a los atributos del archivo de flujo.
+**EvaluateJsonPath processor:** Este procesador se utiliza para evaluar las expresiones JSON que se extraen de Twitter y, a continuación, asignar el resultado de dichas expresiones a los atributos del archivo de flujo.
 
 ![paso_4](./images/4.webp)
 
-**AttributesToJSON:**Este procesador creará un archivo JSON para los atributos del archivo de flujo creados por el procesador anterior.
+**AttributesToJSON:** Este procesador creará un archivo JSON para los atributos del archivo de flujo creados por el procesador anterior.
 Usando como directorio de trabajo la carpeta donde se clono el repositorio:
 ![paso_5](./images/5.webp)
 
-**ConvertJSONToSQL:**This processor converts JSON file to DML statement. To use this processor, we need to create JDBC Connection Pool.
+**ConvertJSONToSQL:** This processor converts JSON file to DML statement. To use this processor, we need to create JDBC Connection Pool.
 
 ![paso_6](./images/11.webp)
 
-A continuación se debe añadir un controlador JDBC Connection Pool que se conecta a la base de datos MySQL. Crearemos este pool seleccionando "Create New Service" de la lista desplegable en la propiedad JDBC Connection pool. Los pasos para realizar esta configuración serán mostrados en el laboratorio, en donde se incluirán los siguientes datos:
+A continuación se debe añadir un controlador JDBC Connection Pool que se conecta a la base de datos PostreSQL. Crearemos este pool seleccionando "Create New Service" de la lista desplegable en la propiedad JDBC Connection pool. Los pasos para realizar esta configuración serán mostrados en el laboratorio, en donde se incluirán los siguientes datos:
 
 
 ![paso_7](./images/17.png)
 
 
 
-**ExecuteSQL processor:**Este procesador utilizado para ejecutar la sentencia de inserción proviene del procesador ConvertJSONToSQL.
+**ExecuteSQL processor:** Este procesador utilizado para ejecutar la sentencia de inserción proviene del procesador ConvertJSONToSQL.
 Necesitamos seleccionar el mismo Connection pool que creamos en ConvertJSONToSQL para la propiedad Database Connection Pooling Service.
 ![paso_8](./images/12.webp)
 
