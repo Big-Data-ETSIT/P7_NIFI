@@ -53,7 +53,7 @@ cd ./P7_NIFI
 Iniciar el los servicios de NiFi, MySQL y Mongo haciendo uso de docker-compose. Para ello ya se porvee del fichero de definicion de dichos servicios:
 
 ```
-sudo docker-compose up -d
+sudo docker compose up -d
 ```
 
 Verificar que todos los contenedores se encuentran activos
