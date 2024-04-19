@@ -2,7 +2,7 @@ version: '3.9'
 services:
   # 
   nifi:
-    image: apache/nifi
+    image: apache/nifi:1.25.0
     container_name: nifi
     environment:
       - SINGLE_USER_CREDENTIALS_USERNAME=admin
@@ -16,17 +16,17 @@ services:
   #  
   mongo:
     container_name: mongo
-    image: mongo
+    image: mongo:7.0.8
     ports:
       - "27018:27017"
 
   adminer:
-    image: adminer
+    image: adminer:4.8.1
     restart: always
     ports:
       - 8080:8080
   db-postgres:
-    image: postgres
+    image: postgres:16.2
     container_name: postgres
     restart: always
     environment:

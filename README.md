@@ -165,7 +165,7 @@ Realizar una captura (CAPTURA1) de la salida del comando anterior y adjuntarla a
 
 ### Bloque 2: Escritura de tweets en MongoDB.
 
-Para está sección se solicita que los datos de salida, sean almacenados en MongoDB. Para ello, dentro del fichero docker-compose ya se ha declara dicho servicio, por lo tanto ya se debería poder acceder a la mongo shell por medio de `docker exec` como se lo hizo con MySQL (la uri de conexión de mongo está compuesta por el nombre del contenedor `mongo` y puerto `27018`). EL nombre de la base de datos y de la colección son db_database y tweets_tab respectivamente.
+Para está sección se solicita que los datos de salida, sean almacenados en MongoDB. Para ello, dentro del fichero docker-compose ya se ha declara dicho servicio, por lo tanto ya se debería poder acceder a la mongo shell por medio de `docker exec` como se lo hizo con MySQL (la uri de conexión de mongo está compuesta por el nombre del contenedor `mongo` y puerto `27018`). EL nombre de la base de datos y de la colección son db_database y tweets_tab respectivamente. Para conectarse a mongoshell desde dentro del contenedor mongo use el comando `mongosh`.
 
 
 Realizar una captura de los datos almacenados en mongo(CAPTURA2) y adjuntarla al infrome de la práctica
