@@ -133,7 +133,7 @@ Se abrirá una ventana donde se permitirá elegir lo procesadores, en nuestro ca
 Usando como directorio de trabajo la carpeta donde se clono el repositorio:
 ![paso_5](./images/5.webp)
 
-**ConvertJSONToSQL:** This processor converts JSON file to DML statement. To use this processor, we need to create JDBC Connection Pool.
+**ConvertJSONToSQL:** Este procesador  convierte un fichero JSON en intrucciones DML (Data Manupulation Languaje). Para usar este procesador es necesario crear un JDBC Connection Pool. 
 
 ![paso_6](./images/11.webp)
 
